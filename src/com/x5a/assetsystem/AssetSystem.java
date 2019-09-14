@@ -1,11 +1,17 @@
 package com.x5a.assetsystem;
 
+import java.util.ArrayList;
+
+import com.x5a.assetsystem.database.User;
+
 public class AssetSystem {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("Coba");
-		System.out.println("12");
+		User base = new User();
+		ArrayList<User> result = base.Select();
+		
+		for (User user : result) {
+			System.out.println(user.Coba);
+		}
 	}
-
 }
