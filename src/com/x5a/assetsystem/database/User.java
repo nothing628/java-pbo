@@ -25,21 +25,7 @@ public class User extends DBBase<User> {
 
     @Override
     public ArrayList<User> Select() {
-        ArrayList<User> list = new ArrayList<User>();
-
-        try {
-            String nama_table = this.getTableName();
-            Statement statement = this.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM " + nama_table);
-
-            while(result.next()) {
-                list.add(MapFromResultSet(result));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return list;
+        return Select("1=1");
     }
 
     @Override
@@ -49,5 +35,24 @@ public class User extends DBBase<User> {
         user.Coba = result.getInt("Coba");
 
         return user;
+    }
+
+    @Override
+    public ArrayList<User> Select(String where) {
+        ArrayList<User> list = new ArrayList<User>();
+
+        try {
+            String nama_table = this.getTableName();
+            Statement statement = this.getConnection().createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM " + nama_table + " WHERE " + where);
+
+            while(result.next()) {
+                list.add(MapFromResultSet(result));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
     }
 }
