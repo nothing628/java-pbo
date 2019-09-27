@@ -6,7 +6,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class User extends DBBase<User> {
-    public int Coba;
+    public int id;
+    public int id_pegawai;
+    public String username;
+    public String password;
 
     @Override
     public void constructor() {
@@ -32,7 +35,10 @@ public class User extends DBBase<User> {
     protected User MapFromResultSet(ResultSet result) throws SQLException {
         User user = new User();
 
-        user.Coba = result.getInt("Coba");
+        user.id = result.getInt("id");
+        user.id_pegawai = result.getInt("id_pegawai");
+        user.username = result.getString("username");
+        user.password = result.getString("password");
 
         return user;
     }

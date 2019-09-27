@@ -11,7 +11,7 @@ public class AssetSystem {
 		ArrayList<User> result = base.Select();
 		
 		for (User user : result) {
-			System.out.println(user.Coba);
+			System.out.println(user.username);
 		}
 	}
 }
