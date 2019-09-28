@@ -61,4 +61,59 @@ public class User extends DBBase<User> {
 
         return list;
     }
+
+    @Override
+    public int Insert() {
+        // TODO Auto-generated method stub
+        try {
+            String nama_table = this.getTableName();
+            Statement statement = this.getConnection().createStatement();
+            String query = "INSERT INTO " + nama_table +
+            "(id, id_pegawai, username, password) VALUES (" +
+            this.id + ", " + this.id_pegawai + ", '" + this.username + "', '" + this.password + "')";
+
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    @Override
+    public int Update() {
+        // TODO Auto-generated method stub
+        try {
+            String nama_table = this.getTableName();
+            Statement statement = this.getConnection().createStatement();
+            String query = "UPDATE " + nama_table +
+            " SET id_pegawai = " + this.id_pegawai +
+            ", username = '" + this.username + "'" +
+            ", password = '" + this.password + "'" +
+            " WHERE id = " + this.id;
+
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
+
+    @Override
+    public int Delete() {
+        // TODO Auto-generated method stub
+        try {
+            String nama_table = this.getTableName();
+            Statement statement = this.getConnection().createStatement();
+            String query = "DELTE FROM " + nama_table +
+            " WHERE id = " + this.id;
+
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return -1;
+    }
 }

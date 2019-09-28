@@ -15,6 +15,9 @@ public abstract class DBBase<E> {
     protected abstract E MapFromResultSet(ResultSet result) throws SQLException;
     public abstract ArrayList<E> Select();
     public abstract ArrayList<E> Select(String where);
+    public abstract int Insert();
+    public abstract int Update();
+    public abstract int Delete();
 
     public void constructor() {
 

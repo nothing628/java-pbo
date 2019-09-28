@@ -11,7 +11,9 @@ public class AssetSystem {
 		ArrayList<User> result = base.Select();
 		
 		for (User user : result) {
+			System.out.println(user.id);
 			System.out.println(user.username);
+			System.out.println(user.password);
 		}
 	}
 }
