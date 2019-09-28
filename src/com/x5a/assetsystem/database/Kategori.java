@@ -5,11 +5,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class User extends DBBase<User> {
+public class Kategori extends DBBase<Kategori> {
     public int id;
-    public int id_pegawai;
-    public String username;
-    public String password;
+    public String nama_kategori;
 
     @Override
     public void constructor() {
@@ -23,29 +21,27 @@ public class User extends DBBase<User> {
 
     @Override
     protected String getTableName() {
-        return "user";
+        return "kategori";
     }
 
     @Override
-    public ArrayList<User> Select() {
+    public ArrayList<Kategori> Select() {
         return Select("1=1");
     }
 
     @Override
-    protected User MapFromResultSet(ResultSet result) throws SQLException {
-        User user = new User();
+    protected Kategori MapFromResultSet(ResultSet result) throws SQLException {
+        Kategori user = new Kategori();
 
         user.id = result.getInt("id");
-        user.id_pegawai = result.getInt("id_pegawai");
-        user.username = result.getString("username");
-        user.password = result.getString("password");
+        user.nama_kategori = result.getString("nama_kategori");
 
         return user;
     }
 
     @Override
-    public ArrayList<User> Select(String where) {
-        ArrayList<User> list = new ArrayList<User>();
+    public ArrayList<Kategori> Select(String where) {
+        ArrayList<Kategori> list = new ArrayList<Kategori>();
 
         try {
             String nama_table = this.getTableName();
@@ -69,8 +65,8 @@ public class User extends DBBase<User> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = "INSERT INTO " + nama_table +
-            "(id, id_pegawai, username, password) VALUES (" +
-            this.id + ", " + this.id_pegawai + ", '" + this.username + "', '" + this.password + "')";
+            "(id, nama_kategori) VALUES (" +
+            this.id + ", '" + this.nama_kategori + "')";
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -87,10 +83,8 @@ public class User extends DBBase<User> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = "UPDATE " + nama_table +
-            " SET id_pegawai = " + this.id_pegawai +
-            ", username = '" + this.username + "'" +
-            ", password = '" + this.password + "'" +
-            " WHERE id = " + this.id;
+            " SET nama_kategori = '" + this.nama_kategori +
+            "' WHERE id = " + this.id;
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
