@@ -1,25 +1,24 @@
 package com.x5a.assetsystem;
 
-import java.util.ArrayList;
-
-import com.x5a.assetsystem.database.Kategori;
-import com.x5a.assetsystem.database.User;
+import com.x5a.assetsystem.page.MainPage;
+import com.x5a.assetsystem.page.PageBase;
 
 public class AssetSystem {
 
 	public static void main(String[] args) {
-		Kategori kategori = new Kategori();
-		// kategori.id = 2;
-		// kategori.nama_kategori="Meja";
-		// kategori.Insert();
+		PageBase page = new MainPage();
+		PageBase result_page = null;
 
-		ArrayList<Kategori> result = kategori.Select();
-		
-		for (Kategori item : result) {
-			// user.nama_kategori = user.nama_kategori + " selesai";
-			// user.Update();
-			System.out.println(item.id);
-			System.out.println(item.nama_kategori);
-		}
+		do {
+			try {
+				page.display();
+				result_page = page.getResult();
+
+				page = result_page;
+			} catch (Exception ex) {
+				result_page = null;
+				ex.printStackTrace();
+			}
+		} while (result_page != null);
 	}
 }

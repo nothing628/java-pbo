@@ -65,7 +65,6 @@ public class Asset extends DBBase<Asset> {
 
     @Override
     public int Insert() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
@@ -88,7 +87,6 @@ public class Asset extends DBBase<Asset> {
 
     @Override
     public int Update() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
@@ -112,7 +110,6 @@ public class Asset extends DBBase<Asset> {
 
     @Override
     public int Delete() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();

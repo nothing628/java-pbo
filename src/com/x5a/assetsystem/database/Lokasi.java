@@ -63,7 +63,6 @@ public class Lokasi extends DBBase<Lokasi> {
 
     @Override
     public int Insert() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
@@ -85,7 +84,6 @@ public class Lokasi extends DBBase<Lokasi> {
 
     @Override
     public int Update() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
@@ -108,7 +106,6 @@ public class Lokasi extends DBBase<Lokasi> {
 
     @Override
     public int Delete() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
