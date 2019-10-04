@@ -6,7 +6,7 @@ public abstract class PageBase {
     public abstract PageBase getResult();
     public abstract void display();
 
-    static Scanner scanner;
+    public static Scanner scanner;
 
     public PageBase() {
         scanner = new Scanner(System.in);
