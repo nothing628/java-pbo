@@ -15,11 +15,11 @@ public class AssetSystem {
 
 		ArrayList<Kategori> result = kategori.Select();
 		
-		for (Kategori user : result) {
+		for (Kategori item : result) {
 			// user.nama_kategori = user.nama_kategori + " selesai";
 			// user.Update();
-			System.out.println(user.id);
-			System.out.println(user.nama_kategori);
+			System.out.println(item.id);
+			System.out.println(item.nama_kategori);
 		}
 	}
 }

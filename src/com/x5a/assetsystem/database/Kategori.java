@@ -46,7 +46,8 @@ public class Kategori extends DBBase<Kategori> {
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM " + nama_table + " WHERE " + where);
+            String query = String.format("SELECT * FROM %s WHERE %s", nama_table, where);
+            ResultSet result = statement.executeQuery(query);
 
             while(result.next()) {
                 list.add(MapFromResultSet(result));
@@ -64,9 +65,12 @@ public class Kategori extends DBBase<Kategori> {
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "INSERT INTO " + nama_table +
-            "(id, nama_kategori) VALUES (" +
-            this.id + ", '" + this.nama_kategori + "')";
+            String query = String.format(
+                "INSERT INTO %s (id, nama_kategori) VALUES (%d, '%s')",
+                nama_table,
+                this.id,
+                this.nama_kategori
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -82,9 +86,13 @@ public class Kategori extends DBBase<Kategori> {
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "UPDATE " + nama_table +
-            " SET nama_kategori = '" + this.nama_kategori +
-            "' WHERE id = " + this.id;
+            String query = String.format(
+                "UPDATE %s SET nama_kategori = '%s' WHERE %s = %d",
+                nama_table,
+                this.nama_kategori,
+                getPrimaryKeyField(),
+                this.id
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -100,8 +108,12 @@ public class Kategori extends DBBase<Kategori> {
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "DELETE FROM " + nama_table +
-            " WHERE id = " + this.id;
+            String query = String.format(
+                "DELETE FROM %s WHERE %s = %d",
+                nama_table,
+                getPrimaryKeyField(),
+                this.id
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
