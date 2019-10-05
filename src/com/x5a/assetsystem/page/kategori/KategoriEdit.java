@@ -21,15 +21,20 @@ public class KategoriEdit extends PageBase {
 
         try {
             printLine();
-            //Add line here
-            print("Nama Kategori     : ");
-            kategori.nama_kategori = scanner.nextLine();
+
+            print("Masukkan ID : ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            Kategori result = kategori.Find(id);
+
+            print(String.format("Nama Kategori (%s): ", result.nama_kategori));
+            result.nama_kategori = scanner.nextLine();
 
             print("Anda yakin? (Y/N) : ");
             String yakin = scanner.nextLine();
 
             if (yakin.equalsIgnoreCase("Y")) {
-                //
+                result.Update();
             }
         } catch (Exception ex) {
             println("Gagal menambahkan");

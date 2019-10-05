@@ -21,16 +21,20 @@ public class KategoriDelete extends PageBase {
 
         try {
             printLine();
-            // What should i do?
+            print("Masukkan ID : ");
+            int id = scanner.nextInt();
+            scanner.nextLine();
+            Kategori result = kategori.Find(id);
 
             print("Anda yakin? (Y/N) : ");
             String yakin = scanner.nextLine();
 
             if (yakin.equalsIgnoreCase("Y")) {
-                //
+                println("Berhasil menghapus data");
+                result.Delete();
             }
         } catch (Exception ex) {
-            println("Gagal menambahkan");
+            println("Gagal menghapus data");
         }
     }
 }
