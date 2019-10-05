@@ -21,12 +21,18 @@ public class KategoriNew extends PageBase {
 
         try {
             printLine();
-            print("Nama Kategori : ");
+            print("Nama Kategori     : ");
             kategori.nama_kategori = scanner.nextLine();
-            kategori.Insert();
-            println("Berhasil menambahkan, tekan tombol apapun untuk kembali");
+
+            print("Anda yakin? (Y/N) : ");
+            String yakin = scanner.nextLine();
+
+            if (yakin.equalsIgnoreCase("Y")) {
+                kategori.Insert();
+                println("Berhasil menambahkan");
+            }
         } catch (Exception ex) {
-            println("Gagal menambahkan, tekan tombol apapun untuk kembali");
+            println("Gagal menambahkan");
         }
     }
 }

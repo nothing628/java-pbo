@@ -17,11 +17,11 @@ public abstract class PageBase {
     }
 
     protected void printLine() {
-        System.out.println("------------------------");
+        System.out.println("------------------------------------");
     }
 
     protected void printDoubleLine() {
-        System.out.println("========================");
+        System.out.println("====================================");
     }
 
     protected void println() {

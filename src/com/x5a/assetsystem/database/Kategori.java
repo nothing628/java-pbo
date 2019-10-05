@@ -19,6 +19,7 @@ public class Kategori extends DBBase<Kategori> {
         return "id";
     }
 
+    @Override
     protected int getLatestId() {
         int result = 1;
 

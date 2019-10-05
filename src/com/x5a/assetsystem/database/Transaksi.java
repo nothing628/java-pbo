@@ -46,6 +46,27 @@ public class Transaksi extends DBBase<Transaksi> {
     }
 
     @Override
+    protected int getLatestId() {
+        int result = 1;
+
+        try {
+            String nama_table = this.getTableName();
+            String kolom_primary = this.getPrimaryKeyField();
+            Statement statement = this.getConnection().createStatement();
+            String query = String.format("SELECT MAX(%s) as %s FROM %s", kolom_primary, kolom_primary, nama_table);
+            ResultSet resultset = statement.executeQuery(query);
+
+            while(resultset.next()) {
+                result = resultset.getInt(kolom_primary);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    @Override
     public ArrayList<Transaksi> Select(String where) {
         ArrayList<Transaksi> list = new ArrayList<Transaksi>();
 

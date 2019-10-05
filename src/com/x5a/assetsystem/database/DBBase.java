@@ -11,6 +11,7 @@ public abstract class DBBase<E> {
      * 
      * @return String
      */
+    protected abstract int getLatestId();
     protected abstract String getTableName();
     protected abstract E MapFromResultSet(ResultSet result) throws SQLException;
     public abstract ArrayList<E> Select();
