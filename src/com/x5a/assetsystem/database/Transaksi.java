@@ -33,6 +33,13 @@ public class Transaksi extends DBBase<Transaksi> {
     }
 
     @Override
+    public Transaksi Find(int id) {
+        ArrayList<Transaksi> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected Transaksi MapFromResultSet(ResultSet result) throws SQLException {
         Transaksi item = new Transaksi();
 

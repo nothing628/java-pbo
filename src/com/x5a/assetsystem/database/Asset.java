@@ -32,6 +32,13 @@ public class Asset extends DBBase<Asset> {
     }
 
     @Override
+    public Asset Find(int id) {
+        ArrayList<Asset> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected Asset MapFromResultSet(ResultSet result) throws SQLException {
         Asset item = new Asset();
 

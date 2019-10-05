@@ -32,6 +32,13 @@ public class Pegawai extends DBBase<Pegawai> {
     }
 
     @Override
+    public Pegawai Find(int id) {
+        ArrayList<Pegawai> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected Pegawai MapFromResultSet(ResultSet result) throws SQLException {
         Pegawai item = new Pegawai();
 

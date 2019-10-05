@@ -20,6 +20,33 @@ public class Kategori extends DBBase<Kategori> {
     }
 
     @Override
+    protected String getTableName() {
+        return "kategori";
+    }
+
+    @Override
+    public ArrayList<Kategori> Select() {
+        return Select("1=1");
+    }
+
+    @Override
+    public Kategori Find(int id) {
+        ArrayList<Kategori> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
+    protected Kategori MapFromResultSet(ResultSet result) throws SQLException {
+        Kategori user = new Kategori();
+
+        user.id = result.getInt("id");
+        user.nama_kategori = result.getString("nama_kategori");
+
+        return user;
+    }
+
+    @Override
     protected int getLatestId() {
         int result = 1;
 
@@ -38,26 +65,6 @@ public class Kategori extends DBBase<Kategori> {
         }
 
         return result;
-    }
-
-    @Override
-    protected String getTableName() {
-        return "kategori";
-    }
-
-    @Override
-    public ArrayList<Kategori> Select() {
-        return Select("1=1");
-    }
-
-    @Override
-    protected Kategori MapFromResultSet(ResultSet result) throws SQLException {
-        Kategori user = new Kategori();
-
-        user.id = result.getInt("id");
-        user.nama_kategori = result.getString("nama_kategori");
-
-        return user;
     }
 
     @Override

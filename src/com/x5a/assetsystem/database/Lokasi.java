@@ -31,6 +31,13 @@ public class Lokasi extends DBBase<Lokasi> {
     }
 
     @Override
+    public Lokasi Find(int id) {
+        ArrayList<Lokasi> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected Lokasi MapFromResultSet(ResultSet result) throws SQLException {
         Lokasi item = new Lokasi();
 

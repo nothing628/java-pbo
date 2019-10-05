@@ -32,6 +32,13 @@ public class User extends DBBase<User> {
     }
 
     @Override
+    public User Find(int id) {
+        ArrayList<User> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected User MapFromResultSet(ResultSet result) throws SQLException {
         User user = new User();
 

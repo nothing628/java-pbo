@@ -14,6 +14,7 @@ public abstract class DBBase<E> {
     protected abstract int getLatestId();
     protected abstract String getTableName();
     protected abstract E MapFromResultSet(ResultSet result) throws SQLException;
+    public abstract E Find(int id);
     public abstract ArrayList<E> Select();
     public abstract ArrayList<E> Select(String where);
     public abstract int Insert();
