@@ -19,6 +19,26 @@ public class Kategori extends DBBase<Kategori> {
         return "id";
     }
 
+    protected int getLatestId() {
+        int result = 1;
+
+        try {
+            String nama_table = this.getTableName();
+            String kolom_primary = this.getPrimaryKeyField();
+            Statement statement = this.getConnection().createStatement();
+            String query = String.format("SELECT MAX(%s) as %s FROM %s", kolom_primary, kolom_primary, nama_table);
+            ResultSet resultset = statement.executeQuery(query);
+
+            while(resultset.next()) {
+                result = resultset.getInt(kolom_primary);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
     @Override
     protected String getTableName() {
         return "kategori";
@@ -67,7 +87,7 @@ public class Kategori extends DBBase<Kategori> {
             String query = String.format(
                 "INSERT INTO %s (id, nama_kategori) VALUES (%d, '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.nama_kategori
             );
 
