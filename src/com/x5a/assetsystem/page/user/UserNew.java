@@ -4,6 +4,11 @@ import com.x5a.assetsystem.page.PageBase;
 import com.x5a.assetsystem.database.User;
 
 public class UserNew extends PageBase {
+    PageBase returnPage;
+
+    public UserNew(PageBase return_page) {
+        this.returnPage = return_page;
+    }
 
     @Override
     public PageBase getResult() {

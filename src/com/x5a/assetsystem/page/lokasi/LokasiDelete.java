@@ -4,6 +4,11 @@ import com.x5a.assetsystem.page.PageBase;
 import com.x5a.assetsystem.database.Lokasi;
 
 public class LokasiDelete extends PageBase {
+    PageBase returnPage;
+
+    public LokasiDelete(PageBase return_page) {
+        this.returnPage = return_page;
+    }
 
     @Override
     public PageBase getResult() {
