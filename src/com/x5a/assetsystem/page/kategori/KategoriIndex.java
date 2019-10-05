@@ -16,8 +16,10 @@ public class KategoriIndex extends PageBase {
             case "1":
                 return new KategoriNew(this);
             case "2":
-                return this;
+                return new KategoriEdit(this);
             case "3":
+                return new KategoriDelete(this);
+            case "4":
                 return new MainPage();
             default:
                 return this;
@@ -29,16 +31,15 @@ public class KategoriIndex extends PageBase {
         Kategori kategori = new Kategori();
         ArrayList<Kategori> list_kategori = kategori.Select();
 
+        printLine();
+
         for (Kategori item : list_kategori) {
             print("| " + item.id + " ");
             println("| " + item.nama_kategori + " |");
         }
 
         printLine();
-        println("Kategori Index :");
-        println("1. Buat Kategori");
-        println("2. Daftar Kategori");
-        println("3. Kembali");
+        println("1. Kategori Baru | 2. Edit Kategori | 3. Hapus Kategori | 4. Kembali");
         print("Choose number : ");
 
         result = scanner.nextLine();

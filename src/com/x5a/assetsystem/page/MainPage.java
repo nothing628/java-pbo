@@ -19,12 +19,12 @@ public class MainPage extends PageBase {
 
     @Override
     public void display() {
-        System.out.println("Main Menu :");
-        System.out.println("1. Main Menu");
-        System.out.println("2. Kategori");
-        System.out.print("Choose number (any for exit): ");
+        printLine();
+        println("Main Menu :");
+        println("1. Main Menu");
+        println("2. Kategori");
+        print("Choose number (any for exit): ");
 
         result = scanner.nextLine();
     }
-
 }
