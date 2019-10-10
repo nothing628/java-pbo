@@ -5,9 +5,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Kategori extends DBBase<Kategori> {
+public class Lokasi extends DBBase<Lokasi> {
     public int id;
-    public String nama_kategori;
+    public String nama_ruang;
+    public String lantai;
 
     @Override
     public void constructor() {
@@ -21,29 +22,30 @@ public class Kategori extends DBBase<Kategori> {
 
     @Override
     protected String getTableName() {
-        return "kategori";
+        return "lokasi";
     }
 
     @Override
-    public ArrayList<Kategori> Select() {
+    public ArrayList<Lokasi> Select() {
         return Select("1=1");
     }
 
     @Override
-    public Kategori Find(int id) {
-        ArrayList<Kategori> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+    public Lokasi Find(int id) {
+        ArrayList<Lokasi> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
 
         return result.get(0);   //Just get first element
     }
 
     @Override
-    protected Kategori MapFromResultSet(ResultSet result) throws SQLException {
-        Kategori user = new Kategori();
+    protected Lokasi MapFromResultSet(ResultSet result) throws SQLException {
+        Lokasi item = new Lokasi();
 
-        user.id = result.getInt("id");
-        user.nama_kategori = result.getString("nama_kategori");
+        item.id = result.getInt("id");
+        item.nama_ruang = result.getString("nama_ruang");
+        item.lantai = result.getString("lantai");
 
-        return user;
+        return item;
     }
 
     @Override
@@ -68,8 +70,8 @@ public class Kategori extends DBBase<Kategori> {
     }
 
     @Override
-    public ArrayList<Kategori> Select(String where) {
-        ArrayList<Kategori> list = new ArrayList<Kategori>();
+    public ArrayList<Lokasi> Select(String where) {
+        ArrayList<Lokasi> list = new ArrayList<Lokasi>();
 
         try {
             String nama_table = this.getTableName();
@@ -93,10 +95,11 @@ public class Kategori extends DBBase<Kategori> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
-                "INSERT INTO %s (id, nama_kategori) VALUES (%d, '%s')",
+                "INSERT INTO %s (id, nama_ruang, lantai) VALUES (%d, '%s', '%s')",
                 nama_table,
-                getLatestId() + 1,
-                this.nama_kategori
+                this.id,
+                this.nama_ruang,
+                this.lantai
             );
 
             return statement.executeUpdate(query);
@@ -113,9 +116,10 @@ public class Kategori extends DBBase<Kategori> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
-                "UPDATE %s SET nama_kategori = '%s' WHERE %s = %d",
+                "UPDATE %s SET nama_ruang = '%s', lantai = '%s' WHERE %s = %d",
                 nama_table,
-                this.nama_kategori,
+                this.nama_ruang,
+                this.lantai,
                 getPrimaryKeyField(),
                 this.id
             );

@@ -32,6 +32,13 @@ public class User extends DBBase<User> {
     }
 
     @Override
+    public User Find(int id) {
+        ArrayList<User> result = Select(String.format("%s = %d", getPrimaryKeyField(), id));
+
+        return result.get(0);   //Just get first element
+    }
+
+    @Override
     protected User MapFromResultSet(ResultSet result) throws SQLException {
         User user = new User();
 
@@ -44,13 +51,35 @@ public class User extends DBBase<User> {
     }
 
     @Override
+    protected int getLatestId() {
+        int result = 1;
+
+        try {
+            String nama_table = this.getTableName();
+            String kolom_primary = this.getPrimaryKeyField();
+            Statement statement = this.getConnection().createStatement();
+            String query = String.format("SELECT MAX(%s) as %s FROM %s", kolom_primary, kolom_primary, nama_table);
+            ResultSet resultset = statement.executeQuery(query);
+
+            while(resultset.next()) {
+                result = resultset.getInt(kolom_primary);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
+
+    @Override
     public ArrayList<User> Select(String where) {
         ArrayList<User> list = new ArrayList<User>();
 
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM " + nama_table + " WHERE " + where);
+            String query = String.format("SELECT * FROM %s WHERE %s", nama_table, where);
+            ResultSet result = statement.executeQuery(query);
 
             while(result.next()) {
                 list.add(MapFromResultSet(result));
@@ -64,13 +93,17 @@ public class User extends DBBase<User> {
 
     @Override
     public int Insert() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "INSERT INTO " + nama_table +
-            "(id, id_pegawai, username, password) VALUES (" +
-            this.id + ", " + this.id_pegawai + ", '" + this.username + "', '" + this.password + "')";
+            String query = String.format(
+                "INSERT INTO %s (id, id_pegawai, username, password) VALUES (%d, %d, '%s', '%s')",
+                nama_table,
+                this.id,
+                this.id_pegawai,
+                this.username,
+                this.password
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -82,15 +115,18 @@ public class User extends DBBase<User> {
 
     @Override
     public int Update() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "UPDATE " + nama_table +
-            " SET id_pegawai = " + this.id_pegawai +
-            ", username = '" + this.username + "'" +
-            ", password = '" + this.password + "'" +
-            " WHERE id = " + this.id;
+            String query = String.format(
+                "UPDATE %s SET id_pegawai = %d, username = '%s', password = '%s' WHERE %s = %d",
+                nama_table,
+                this.id_pegawai,
+                this.username,
+                this.password,
+                getPrimaryKeyField(),
+                this.id
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
@@ -102,12 +138,15 @@ public class User extends DBBase<User> {
 
     @Override
     public int Delete() {
-        // TODO Auto-generated method stub
         try {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
-            String query = "DELETE FROM " + nama_table +
-            " WHERE id = " + this.id;
+            String query = String.format(
+                "DELETE FROM %s WHERE %s = %d",
+                nama_table,
+                getPrimaryKeyField(),
+                this.id
+            );
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {
