@@ -28,9 +28,9 @@ public class LokasiEdit extends PageBase {
             Lokasi result = lokasi.Find(id);
 
             print("Nama Ruang        : ");
-            lokasi.nama_ruang = scanner.nextLine();
+            result.nama_ruang = scanner.nextLine();
             print("Lantai            : ");
-            lokasi.lantai = scanner.nextLine();
+            result.lantai = scanner.nextLine();
 
             print("Anda yakin? (Y/N) : ");
             String yakin = scanner.nextLine();

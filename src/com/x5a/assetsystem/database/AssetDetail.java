@@ -101,7 +101,7 @@ public class AssetDetail extends DBBase<AssetDetail> {
             String query = String.format(
                 "INSERT INTO %s (id, id_asset, id_lokasi, id_pegawai, kondisi) VALUES (%d, %d, %d, %d, '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.id_asset,
                 this.id_lokasi,
                 this.id_pegawai,

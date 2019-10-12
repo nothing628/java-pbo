@@ -28,11 +28,11 @@ public class PegawaiEdit extends PageBase {
             Pegawai result = orm.Find(id);
 
             print("Nama Pegawai      : ");
-            orm.nama_pegawai = scanner.nextLine();
+            result.nama_pegawai = scanner.nextLine();
             print("Lantai            : ");
-            orm.jenis_kelamin = scanner.nextLine();
+            result.jenis_kelamin = scanner.nextLine();
             print("Jabatan           : ");
-            orm.jabatan = scanner.nextLine();
+            result.jabatan = scanner.nextLine();
 
             print("Anda yakin? (Y/N) : ");
             String yakin = scanner.nextLine();
