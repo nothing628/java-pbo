@@ -1,5 +1,8 @@
 package com.x5a.assetsystem.page.asset;
 
+import java.util.ArrayList;
+
+import com.x5a.assetsystem.database.Asset;
 import com.x5a.assetsystem.page.MainPage;
 import com.x5a.assetsystem.page.PageBase;
 
@@ -26,10 +29,20 @@ public class AssetIndex extends PageBase {
 
     @Override
     public void display() {
-        print("Main page");
+    	Asset orm = new Asset();
+    	ArrayList<Asset> list_asset = orm.Select();
 
         printLine();
-        println("1. Asset Baru | 2. Edit Asset | 3. Hapus Asset | 4. Detail Asset | 5. Kembali");
+
+        for (Asset item : list_asset) {
+            print("| " + item.id + " ");
+            print("| " + item.nama_asset + " ");
+            print("| " + item.kategori + " ");
+            println("| " + item.jenis + " |");
+        }
+    	
+        printLine();
+        println("1. Asset Baru | 2. Edit Asset | 3. Hapus Asset | 4. Data Barang | 5. Kembali");
         print("Choose number : ");
 
         result = scanner.nextLine();

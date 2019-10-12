@@ -97,7 +97,7 @@ public class Asset extends DBBase<Asset> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
-                "INSERT INTO %s (id, id_kategori, nama_asset, jenis) VALUES (%d, '%s', '%s', '%s')",
+                "INSERT INTO %s (id, kategori, nama_asset, jenis) VALUES (%d, '%s', '%s', '%s')",
                 nama_table,
                 getLatestId() + 1,
                 this.kategori,

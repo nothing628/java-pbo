@@ -1,5 +1,6 @@
 package com.x5a.assetsystem.page.asset;
 
+import com.x5a.assetsystem.database.Asset;
 import com.x5a.assetsystem.page.PageBase;
 
 public class AssetEdit extends PageBase {
@@ -12,14 +13,39 @@ public class AssetEdit extends PageBase {
     
 	@Override
 	public PageBase getResult() {
-		// TODO Auto-generated method stub
-		return null;
+		return returnPage;
 	}
 
 	@Override
 	public void display() {
-		// TODO Auto-generated method stub
+		Asset orm = new Asset();
 		
+		try {
+			printLine();
+			print("Masukkan ID       : ");
+			int id = scanner.nextInt();
+			scanner.nextLine();
+			
+			Asset result = orm.Find(id);
+			
+			printLine();
+			println("Data Saat ini :");
+			println(String.format("Nama Asset        : %s", result.nama_asset));
+			println(String.format("Kategori          : %s", result.kategori));
+			println(String.format("Jenis             : %s", result.jenis));
+			
+			printLine();
+			print("Nama Asset        : ");
+			result.nama_asset = scanner.nextLine();
+			print("Kategori          : ");
+			result.kategori = scanner.nextLine();
+			print("Jenis             : ");
+			result.jenis = scanner.nextLine();
+			
+			result.Update();
+		} catch (Exception ex) {
+			println("Gagal menambahkan");
+		}
 	}
 
 }
