@@ -8,7 +8,7 @@ public abstract class PageBase {
 
     public static Scanner scanner;
 
-    public PageBase() {
+    static {
         scanner = new Scanner(System.in);
     }
 
