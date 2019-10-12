@@ -12,13 +12,31 @@ public class PegawaiNew extends PageBase {
 
     @Override
     public PageBase getResult() {
-        // TODO Auto-generated method stub
-        return null;
+        return this.returnPage;
     }
 
     @Override
     public void display() {
-        // TODO Auto-generated method stub
+        Pegawai orm = new Pegawai();
 
+        try {
+            printLine();
+            print("Nama Pegawai      : ");
+            orm.nama_pegawai = scanner.nextLine();
+            print("Lantai            : ");
+            orm.jenis_kelamin = scanner.nextLine();
+            print("Jabatan           : ");
+            orm.jabatan = scanner.nextLine();
+
+            print("Anda yakin? (Y/N) : ");
+            String yakin = scanner.nextLine();
+
+            if (yakin.equalsIgnoreCase("Y")) {
+                orm.Insert();
+                println("Berhasil menambahkan");
+            }
+        } catch (Exception ex) {
+            println("Gagal menambahkan");
+        }
     }
 }

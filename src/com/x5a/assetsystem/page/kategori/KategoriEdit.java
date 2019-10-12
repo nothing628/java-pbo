@@ -27,7 +27,7 @@ public class KategoriEdit extends PageBase {
             scanner.nextLine();
             Kategori result = kategori.Find(id);
 
-            print(String.format("Nama Kategori (%s): ", result.nama_kategori));
+            print("Nama Kategori     : ");
             result.nama_kategori = scanner.nextLine();
 
             print("Anda yakin? (Y/N) : ");
@@ -37,7 +37,7 @@ public class KategoriEdit extends PageBase {
                 result.Update();
             }
         } catch (Exception ex) {
-            println("Gagal menambahkan");
+            println("Gagal mengupdate");
         }
     }
 }
