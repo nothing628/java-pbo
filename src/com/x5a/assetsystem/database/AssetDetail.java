@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class AssetDetail extends DBBase<AssetDetail> {
     public int id;
     public int id_asset;
-    public int id_lokasi;
-    public int id_pegawai;
+    public String lokasi;
+    public String pegawai;
     public String kondisi;
 
     @Override
@@ -45,8 +45,8 @@ public class AssetDetail extends DBBase<AssetDetail> {
 
         item.id = result.getInt("id");
         item.id_asset = result.getInt("id_asset");
-        item.id_lokasi = result.getInt("id_lokasi");
-        item.id_pegawai = result.getInt("id_pegawai");
+        item.lokasi = result.getString("lokasi");
+        item.pegawai = result.getString("pegawai");
         item.kondisi = result.getString("kondisi");
 
         return item;
@@ -99,12 +99,12 @@ public class AssetDetail extends DBBase<AssetDetail> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
-                "INSERT INTO %s (id, id_asset, id_lokasi, id_pegawai, kondisi) VALUES (%d, %d, %d, %d, '%s')",
+                "INSERT INTO %s (id, id_asset, lokasi, pegawai, kondisi) VALUES (%d, %d, '%s', '%s', '%s')",
                 nama_table,
                 getLatestId() + 1,
                 this.id_asset,
-                this.id_lokasi,
-                this.id_pegawai,
+                this.lokasi,
+                this.pegawai,
                 this.kondisi
             );
 
@@ -122,11 +122,11 @@ public class AssetDetail extends DBBase<AssetDetail> {
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
-                "UPDATE %s SET id_asset = %d, id_lokasi = %d, id_pegawai = %d, kondisi = '%s' WHERE %s = %d",
+                "UPDATE %s SET id_asset = %d, lokasi = '%s', pegawai = '%s', kondisi = '%s' WHERE %s = %d",
                 nama_table,
                 this.id_asset,
-                this.id_lokasi,
-                this.id_pegawai,
+                this.lokasi,
+                this.pegawai,
                 this.kondisi,
                 getPrimaryKeyField(),
                 this.id
