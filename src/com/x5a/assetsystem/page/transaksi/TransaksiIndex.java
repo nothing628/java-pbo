@@ -1,15 +1,9 @@
-package com.x5a.assetsystem.page.assetdetail;
+package com.x5a.assetsystem.page.transaksi;
 
 import com.x5a.assetsystem.page.PageBase;
 
-public class AssetDetailNew extends PageBase {
+public class TransaksiIndex extends PageBase {
 
-	PageBase returnPage;
-
-    public AssetDetailNew(PageBase return_page) {
-        this.returnPage = return_page;
-    }
-    
 	@Override
 	public PageBase getResult() {
 		// TODO Auto-generated method stub

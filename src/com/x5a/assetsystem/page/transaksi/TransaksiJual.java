@@ -1,12 +1,12 @@
-package com.x5a.assetsystem.page.assetdetail;
+package com.x5a.assetsystem.page.transaksi;
 
 import com.x5a.assetsystem.page.PageBase;
 
-public class AssetDetailNew extends PageBase {
+public class TransaksiJual extends PageBase {
 
 	PageBase returnPage;
 
-    public AssetDetailNew(PageBase return_page) {
+    public TransaksiJual(PageBase return_page) {
         this.returnPage = return_page;
     }
     
