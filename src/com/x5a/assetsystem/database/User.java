@@ -99,7 +99,7 @@ public class User extends DBBase<User> {
             String query = String.format(
                 "INSERT INTO %s (id, id_pegawai, username, password) VALUES (%d, %d, '%s', '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.id_pegawai,
                 this.username,
                 this.password

@@ -99,7 +99,7 @@ public class TransaksiDetail extends DBBase<TransaksiDetail> {
             String query = String.format(
                 "INSERT INTO %s (id, id_transaksi, id_asset_detail, harga) VALUES (%d, %d, %d, %d)",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.id_transaksi,
                 this.id_asset_detail,
                 this.harga

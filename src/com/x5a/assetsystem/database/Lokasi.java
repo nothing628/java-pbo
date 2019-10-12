@@ -97,7 +97,7 @@ public class Lokasi extends DBBase<Lokasi> {
             String query = String.format(
                 "INSERT INTO %s (id, nama_ruang, lantai) VALUES (%d, '%s', '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.nama_ruang,
                 this.lantai
             );

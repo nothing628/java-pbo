@@ -101,7 +101,7 @@ public class Transaksi extends DBBase<Transaksi> {
             String query = String.format(
                 "INSERT INTO %s (id, tgl_transaksi, jenis, penerima, penjual) VALUES (%d, '%s', '%s', '%s', '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.tgl_transaksi,
                 this.jenis,
                 this.penerima,

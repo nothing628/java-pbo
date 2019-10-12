@@ -28,11 +28,11 @@ public class UserEdit extends PageBase {
             User result = orm.Find(id);
 
             print("Username          : ");
-            orm.username = scanner.nextLine();
+            result.username = scanner.nextLine();
             print("Password          : ");
-            orm.password = scanner.nextLine();
+            result.password = scanner.nextLine();
             print("ID Pegawai        : ");
-            orm.id_pegawai = scanner.nextInt();
+            result.id_pegawai = scanner.nextInt();
             scanner.nextLine();
 
             print("Anda yakin? (Y/N) : ");

@@ -1,5 +1,6 @@
 package com.x5a.assetsystem.page;
 
+import com.x5a.assetsystem.page.asset.AssetIndex;
 import com.x5a.assetsystem.page.kategori.KategoriIndex;
 import com.x5a.assetsystem.page.lokasi.LokasiIndex;
 import com.x5a.assetsystem.page.pegawai.PegawaiIndex;
@@ -14,12 +15,14 @@ public class MainPage extends PageBase {
             case "1":
                 return new MainPage();
             case "2":
-                return new KategoriIndex();
+                return new AssetIndex();
             case "3":
-                return new LokasiIndex();
+                return new KategoriIndex();
             case "4":
-                return new PegawaiIndex();
+                return new LokasiIndex();
             case "5":
+                return new PegawaiIndex();
+            case "6":
                 return new UserIndex();
         }
 
@@ -31,10 +34,11 @@ public class MainPage extends PageBase {
         printLine();
         println("Main Menu :");
         println("1. Main Menu");
-        println("2. Kategori");
-        println("3. Lokasi");
-        println("4. Pegawai");
-        println("5. User");
+        println("2. Asset");
+        println("3. Kategori");
+        println("4. Lokasi");
+        println("5. Pegawai");
+        println("6. User");
         print("Choose number (any for exit): ");
 
         result = scanner.nextLine();

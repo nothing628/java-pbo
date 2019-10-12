@@ -99,7 +99,7 @@ public class Pegawai extends DBBase<Pegawai> {
             String query = String.format(
                 "INSERT INTO %s (id, nama_pegawai, jenis_kelamin, jabatan) VALUES (%d, '%s', '%s', '%s')",
                 nama_table,
-                this.id,
+                getLatestId() + 1,
                 this.nama_pegawai,
                 this.jenis_kelamin,
                 this.jabatan
