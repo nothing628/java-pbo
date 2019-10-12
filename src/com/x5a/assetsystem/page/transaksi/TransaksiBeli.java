@@ -12,8 +12,7 @@ public class TransaksiBeli extends PageBase {
     
 	@Override
 	public PageBase getResult() {
-		// TODO Auto-generated method stub
-		return null;
+		return returnPage;
 	}
 
 	@Override
