@@ -30,6 +30,7 @@ public class AssetNew extends PageBase {
 			orm.jenis = scanner.nextLine();
 			
 			orm.Insert();
+			println("Berhasil menambahkan data");
 		} catch (Exception ex) {
 			println("Gagal menambahkan");
 		}

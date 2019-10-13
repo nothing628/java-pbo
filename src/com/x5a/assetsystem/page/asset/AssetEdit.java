@@ -42,9 +42,16 @@ public class AssetEdit extends PageBase {
 			print("Jenis             : ");
 			result.jenis = scanner.nextLine();
 			
-			result.Update();
+			printLine();
+			print("Anda yakin? (Y/N) : ");
+            String yakin = scanner.nextLine();
+
+            if (yakin.equalsIgnoreCase("Y")) {
+                println("Berhasil mengupdate data");
+                result.Update();
+            }
 		} catch (Exception ex) {
-			println("Gagal menambahkan");
+			println("Gagal mengupdate");
 		}
 	}
 

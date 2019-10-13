@@ -19,7 +19,7 @@ public class AssetIndex extends PageBase {
 	        case "3":
 	            return new AssetDelete(this);
 	        case "4":
-	        	return new AssetDetail(this);
+	        	return new AssetBarang(this);
 	        case "5":
 	            return new MainPage();
 	        default:
