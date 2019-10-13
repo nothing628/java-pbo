@@ -14,7 +14,7 @@ public class LaporanIndex extends PageBase {
 	@Override
 	public PageBase getResult() {
 		switch (result) {
-			case "0":
+			case "3":
 				return returnPage;
 			case "1":
 				return new LaporanAsset(this);
@@ -30,8 +30,7 @@ public class LaporanIndex extends PageBase {
 		printLine();
         println("1. Laporan Asset");
         println("2. Laporan Transaksi");
-        println();
-        println("0. Back");
+        println("3. Back");
         print("Choose number : ");
 
         result = scanner.nextLine();

@@ -4,6 +4,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBConnection {
@@ -17,6 +19,12 @@ public class DBConnection {
 		} catch (SQLException | ClassNotFoundException e) {
 			System.out.print("Gagal konek" + e.getMessage());
 		}
+    }
+    
+    public static ResultSet Query(String query) throws SQLException {
+    	Statement stat = connection.createStatement();
+    	
+    	return stat.executeQuery(query);
     }
 
     public static String getDbFileLocation() {
