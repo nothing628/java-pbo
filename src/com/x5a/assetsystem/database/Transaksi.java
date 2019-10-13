@@ -96,17 +96,20 @@ public class Transaksi extends DBBase<Transaksi> {
     @Override
     public int Insert() {
         try {
+        	int id_lanjutan = getLatestId() + 1;
             String nama_table = this.getTableName();
             Statement statement = this.getConnection().createStatement();
             String query = String.format(
                 "INSERT INTO %s (id, tgl_transaksi, jenis, penerima, penjual) VALUES (%d, '%s', '%s', '%s', '%s')",
                 nama_table,
-                getLatestId() + 1,
+                id_lanjutan,
                 this.tgl_transaksi,
                 this.jenis,
                 this.penerima,
                 this.penjual
             );
+            
+            this.id = id_lanjutan;
 
             return statement.executeUpdate(query);
         } catch (SQLException e) {

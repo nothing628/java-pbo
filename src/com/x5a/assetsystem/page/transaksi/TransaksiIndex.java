@@ -18,7 +18,7 @@ public class TransaksiIndex extends PageBase {
 				return new TransaksiBeli(this);
 			case "2":
 				return new TransaksiJual(this);
-			case "0":
+			case "3":
 				return returnPage;
 			default:
 				return this;
@@ -30,8 +30,7 @@ public class TransaksiIndex extends PageBase {
 		printLine();
         println("1. Transkasi Beli");
         println("2. Transaksi Jual");
-        println();
-        println("0. Back");
+        println("3. Kembali");
         print("Choose number : ");
 
         result = scanner.nextLine();
