@@ -6,7 +6,7 @@ Asset sistem adalah contoh aplikasi java yang menerapkan konsep OOP(_Object Orie
 Editor dan sistem requirement yg digunakan dalam project ini sebagai berikut:
 * [Eclipse IDE 2019-09](https://www.eclipse.org/downloads/)
 * [Sqlite 3](https://www.sqlite.org/index.html)
-* Java JDK 8 (Amazon Corretto 8)[https://docs.aws.amazon.com/en_us/corretto/latest/corretto-8-ug/downloads-list.html]
+* Java JDK 8 [Amazon Corretto 8](https://docs.aws.amazon.com/en_us/corretto/latest/corretto-8-ug/downloads-list.html)
 
 ### Struktur Database
 
