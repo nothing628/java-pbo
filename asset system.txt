@@ -1,30 +1,12 @@
 PRAGMA foreign_keys=OFF;
 BEGIN TRANSACTION;
 
-CREATE TABLE kategori (
-id INTEGER NOT NULL PRIMARY KEY,
-nama_kategori TEXT NOT NULL
-);
-
 CREATE TABLE asset (
 id INTEGER NOT NULL PRIMARY KEY,
 id_kategori INTEGER NOT NULL,
 nama_asset TEXT NOT NULL,
 jenis TEXT NOT NULL,
 FOREIGN KEY(id_kategori) REFERENCES kategori (id)
-);
-
-CREATE TABLE lokasi (
-id INTEGER NOT NULL PRIMARY KEY,
-nama_ruang TEXT NOT NULL,
-lantai TEXT
-);
-
-CREATE TABLE pegawai (
-id INTEGER NOT NULL PRIMARY KEY,
-nama_pegawai TEXT NOT NULL,
-jenis_kelamin TEXT NOT NULL,
-jabatan TEXT NOT NULL
 );
 
 CREATE TABLE asset_detail (
@@ -53,13 +35,6 @@ id_asset_detail INTEGER NOT NULL,
 harga NUMERIC NOT NULL,
 FOREIGN KEY(id_transaksi) REFERENCES transaksi(id),
 FOREIGN KEY(id_asset_detail) REFERENCES asset_detail(id)
-);
-
-CREATE TABLE user (
-id INTEGER NOT NULL PRIMARY KEY,
-id_pegawai INTEGER NOT NULL,
-username TEXT NOT NULL,
-password TEXT NOT NULL
 );
 
 COMMIT;
