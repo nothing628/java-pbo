@@ -29,17 +29,28 @@ public class LaporanTransaksi extends PageBase {
 					+ "JOIN asset_detail ON asset_detail.id = transaksi_detail.id_asset_detail "
 					+ "JOIN asset ON asset_detail.id_asset = asset.id");
 			
+			String header_table = String.format(
+					"| %28s | %15s | %20s | %10s | %15s | %10s | %7s |",
+					"Tanggal",
+					"Transaksi",
+					"Asset",
+					"Penerima",
+					"Penjual",
+					"Nilai",
+					"Kondisi");
+			
 			printLine();
+			println(header_table);
 			while (set.next()) {
 				String row_table = String.format(
-						"| %20s | %15s | %20s | %10s | %15s | %10s | %6s |",
+						"| %28s | %15s | %20s | %10s | %15s | %10s | %7s |",
 						set.getString("tgl_transaksi"),
 						set.getString("jenis"),
 						set.getString("nama_asset"),
 						set.getString("penerima"),
 						set.getString("penjual"),
 						set.getString("harga"),
-						set.getString("jenis"));
+						set.getString("kondisi"));
 
 				println(row_table);
 			}

@@ -3,6 +3,7 @@ package com.x5a.assetsystem.page.transaksi;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.x5a.assetsystem.AssetSystem;
 import com.x5a.assetsystem.database.Asset;
 import com.x5a.assetsystem.database.AssetDetail;
 import com.x5a.assetsystem.database.Transaksi;
@@ -60,7 +61,7 @@ public class TransaksiJual extends PageBase {
 			
 			print("Pembeli  : ");
 			orm_transaksi.penerima = scanner.nextLine();
-			orm_transaksi.penjual = "";
+			orm_transaksi.penjual = AssetSystem.NamaPerusahaan;
 			print("Harga    : ");
 			int harga = scanner.nextInt();
 			scanner.nextLine();

@@ -4,6 +4,7 @@ import com.x5a.assetsystem.page.MainPage;
 import com.x5a.assetsystem.page.PageBase;
 
 public class AssetSystem {
+	public final static String NamaPerusahaan = "PT. Maju Mundur Senang";
 
 	public static void main(String[] args) {
 		PageBase current_page = new MainPage();

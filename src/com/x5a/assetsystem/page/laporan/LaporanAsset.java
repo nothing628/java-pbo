@@ -27,7 +27,17 @@ public class LaporanAsset extends PageBase {
 			ResultSet set = stat.executeQuery("SELECT * FROM asset "
 					+ "JOIN asset_detail ON asset.id = asset_detail.id_asset");
 			
+			String header_table = String.format(
+					"| %20s | %15s | %10s | %10s | %10s | %6s |",
+					"Asset",
+					"Kategori",
+					"Jenis",
+					"Lokasi",
+					"Pengguna",
+					"Kondisi");
+			
 			printLine();
+			println(header_table);
 			while (set.next()) {
 				String row_table = String.format(
 						"| %20s | %15s | %10s | %10s | %10s | %6s |",

@@ -8,6 +8,7 @@ import com.x5a.assetsystem.database.AssetDetail;
 import com.x5a.assetsystem.database.Transaksi;
 import com.x5a.assetsystem.database.TransaksiDetail;
 import com.x5a.assetsystem.page.PageBase;
+import com.x5a.assetsystem.AssetSystem;
 
 public class TransaksiBeli extends PageBase {
 
@@ -46,7 +47,7 @@ public class TransaksiBeli extends PageBase {
 			
 			print("Penjual  : ");
 			orm_transaksi.penjual = scanner.nextLine();
-			orm_transaksi.penerima = "";
+			orm_transaksi.penerima = AssetSystem.NamaPerusahaan;
 			print("Harga    : ");
 			int harga = scanner.nextInt();
 			scanner.nextLine();
