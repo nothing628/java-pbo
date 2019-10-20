@@ -12,7 +12,7 @@ public class LaporanIndex extends PageBase {
     }
     
 	@Override
-	public PageBase getResult() {
+	public PageBase getNextPage() {
 		switch (result) {
 			case "3":
 				return returnPage;

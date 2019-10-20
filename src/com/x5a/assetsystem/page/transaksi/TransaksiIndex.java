@@ -12,7 +12,7 @@ public class TransaksiIndex extends PageBase {
     }
     
 	@Override
-	public PageBase getResult() {
+	public PageBase getNextPage() {
 		switch (result) {
 			case "1":
 				return new TransaksiBeli(this);

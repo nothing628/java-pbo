@@ -6,19 +6,16 @@ import com.x5a.assetsystem.page.PageBase;
 public class AssetSystem {
 
 	public static void main(String[] args) {
-		PageBase page = new MainPage();
-		PageBase result_page = null;
+		PageBase current_page = new MainPage();
 
 		do {
 			try {
-				page.display();
-				result_page = page.getResult();
-
-				page = result_page;
+				current_page.display();
+				current_page = current_page.getNextPage();
 			} catch (Exception ex) {
-				result_page = null;
+				current_page = null;
 				ex.printStackTrace();
 			}
-		} while (result_page != null);
+		} while (current_page != null);
 	}
 }

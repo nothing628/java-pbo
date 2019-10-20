@@ -8,10 +8,10 @@ public class MainPage extends PageBase {
     String result;
 
     @Override
-    public PageBase getResult() {
+    public PageBase getNextPage() {
         switch (result) {
             case "1":
-                return new AssetIndex();
+                return new AssetIndex(this);
             case "2":
                 return new TransaksiIndex(this);
             case "3":

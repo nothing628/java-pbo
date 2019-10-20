@@ -12,7 +12,7 @@ public class AssetNew extends PageBase {
     }
     
 	@Override
-	public PageBase getResult() {
+	public PageBase getNextPage() {
 		return returnPage;
 	}
 

@@ -3,7 +3,7 @@ package com.x5a.assetsystem.page;
 import java.util.Scanner;
 
 public abstract class PageBase {
-    public abstract PageBase getResult();
+    public abstract PageBase getNextPage();
     public abstract void display();
 
     public static Scanner scanner;

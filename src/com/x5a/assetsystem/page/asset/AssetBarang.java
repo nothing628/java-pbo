@@ -20,7 +20,7 @@ public class AssetBarang extends PageBase {
     }
     
 	@Override
-	public PageBase getResult() {
+	public PageBase getNextPage() {
 		switch (respon) {
 		case "1":
 			return new AssetDetailNew(this, asset);
