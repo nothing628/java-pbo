@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class AssetDetail extends DBBase<AssetDetail> {
+public class AssetDetail extends DBBase {
     public int id;
     public int id_asset;
     public String lokasi;

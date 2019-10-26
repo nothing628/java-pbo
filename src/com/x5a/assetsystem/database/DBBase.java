@@ -3,9 +3,9 @@ package com.x5a.assetsystem.database;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
 
-public abstract class DBBase<E> {
+public abstract class DBBase {
     /**
      * Nama tabel yang mewakili object class
      * 
@@ -13,10 +13,10 @@ public abstract class DBBase<E> {
      */
     protected abstract int getLatestId();
     protected abstract String getTableName();
-    protected abstract E MapFromResultSet(ResultSet result) throws SQLException;
-    public abstract E Find(int id);
-    public abstract ArrayList<E> Select();
-    public abstract ArrayList<E> Select(String where);
+    protected abstract DBBase MapFromResultSet(ResultSet result) throws SQLException;
+    public abstract DBBase Find(int id);
+    public abstract List<?> Select();
+    public abstract List<?> Select(String where);
     public abstract int Insert();
     public abstract int Update();
     public abstract int Delete();

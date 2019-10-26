@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-public class Transaksi extends DBBase<Transaksi> {
+public class Transaksi extends DBBase {
     public int id;
     public String tgl_transaksi;
     public String jenis;
